@@ -35,4 +35,13 @@ export class AuthService {
     logout() {
         this.storage.setLocaluser(null);
     }
+
+    refreshToken() {
+        return this.http.post(`${API_CONFIG.baseUrl}/auth/refreshToken`,
+        {},
+        {
+            observe: 'response',
+            responseType: 'text'
+        });
+    }
 }
