@@ -4,7 +4,7 @@ import { StorageService } from '../../services/storage.service';
 import { ClienteDTO } from '../../models/cliente.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
 import { API_CONFIG } from '../../config/api.config';
-//import { CameraOptions, Camera } from '@ionic-native/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @IonicPage()
@@ -16,7 +16,7 @@ export class ProfilePage {
 
   cliente: ClienteDTO;
   picture: string;
-  profileImage;
+  profileImage: any;
   cameraOn: boolean = false;
 
   constructor(
@@ -24,7 +24,7 @@ export class ProfilePage {
     public navParams: NavParams,
     public storage: StorageService,
     public clienteService: ClienteService,
-    //public camera: Camera,
+    public camera: Camera,
     public sanitizer: DomSanitizer) {
 
       this.profileImage = 'assets/imgs/avatar-blank.png';
@@ -81,7 +81,7 @@ export class ProfilePage {
 
     this.cameraOn = true;
 
-/*    const options: CameraOptions = {
+    const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.PNG,
@@ -93,14 +93,14 @@ export class ProfilePage {
      this.cameraOn = false;
     }, (err) => {
       this.cameraOn = false;
-    });*/
+    });
   }
 
   getGalleryPicture() {
 
     this.cameraOn = true;
 
-   /* const options: CameraOptions = {
+    const options: CameraOptions = {
       quality: 100,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -113,7 +113,7 @@ export class ProfilePage {
      this.cameraOn = false;
     }, (err) => {
       this.cameraOn = false;
-    });*/
+    });
   }
 
   sendPicture() {
